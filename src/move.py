@@ -28,21 +28,23 @@ GPIO.setup(Motor1A,GPIO.OUT)
 GPIO.setup(Motor1B,GPIO.OUT)
 GPIO.setup(Motor1E,GPIO.OUT)
 
-# def odom_callback(odom_msg):
+# def odom_callback(odom_data):
 #     global odom_data
-#     odom_data = odom_msg
+#     odom_data = odom_data
 
 def move(x_setpoint,y_setpoint):
     global odom_data
     reached = 0
     while reached != 1:
 
-        odom_msg = rospy.wait_for_message("forward", Odometry)
+        odom_data = rospy.wait_for_message("/camera/odom/sample", Odometry)
+        # print(odom_data)
 
         quaternion = Quaternion()
         quaternion = [odom_data.pose.pose.orientation.x,odom_data.pose.pose.orientation.y,odom_data.pose.pose.orientation.z,odom_data.pose.pose.orientation.w]
 
         roll, pitch, yaw = tf_conversions.transformations.euler_from_quaternion(quaternion)
+
         if y_setpoint - odom_data.pose.pose.position.y !=0:
             theta = math.atan((x_setpoint - odom_data.pose.pose.position.x)/(y_setpoint - odom_data.pose.pose.position.y))
         else:
@@ -73,7 +75,6 @@ def move(x_setpoint,y_setpoint):
                 GPIO.output(Motor2E,GPIO.HIGH)        
                 rospy.loginfo("Going Left") 
             GPIO.output(Motor2E,GPIO.LOW)
-
 
         while  -ed < y_setpoint - odom_data.pose.pose.position.y < ed :
             if y_setpoint - odom_data.pose.pose.position.y > 0 : 
