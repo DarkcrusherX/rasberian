@@ -1,4 +1,4 @@
-material rasberian/body{
+material Gazebo/body{
     technique
     {
         pass

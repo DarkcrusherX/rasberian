@@ -28,11 +28,12 @@
 
             <material name="silver">
                 <!-- <color rgba="0.75 0.75 0.75 1"/> -->
-                <script>
-                    <uri>/home/ahal/catkin_ws/src/rasberian/model/materials/scripts</uri>
+                <!-- <script>
+                    <uri>/home/ahal/catkin_ws/src/rasberian/model/materials/scripts/marker.material</uri>
                     <uri>/home/ahal/catkin_ws/src/rasberian/model/materials/texture/model.jpg</uri>
                     <name>rasberian/body</name>
-                </script>
+                </script> -->
+                <texture filename="/home/ahal/catkin_ws/src/rasberian/model/materials/scripts/model.jpg" />
             </material>
         </visual>
 
@@ -104,7 +105,9 @@
       <geometry>
         <sphere radius="0.00625"/>
       </geometry>
-      <material name="Black"/>
+        <material name="black">
+             <color rgba="0 0 0 1"/>
+        </material>
     </visual>
     <collision>
       <geometry>
@@ -117,6 +120,7 @@
       <origin xyz="0 0 0"/>
       <inertia ixx="0.0000025" ixy="0.0" ixz="0.0" iyy="0.0000025" iyz="0.0" izz="0.0000025"/>
     </inertial>
+    
   </link>
 
   <!-- <joint name="caster_joint" type="fixed">
@@ -134,14 +138,14 @@
         <collision>
 
             <geometry>
-                <box size="0.01 0.01 0.01"/>
+                <box size="0.01 0.01 0.04"/>
             </geometry>
 
         </collision>
 
         <visual>
             <geometry>
-                <box size="0.01 0.01 0.01"/>
+                <box size="0.01 0.01 0.04"/>
             </geometry>
 
             <material name="silver">
@@ -153,20 +157,20 @@
     <joint name="caster_support_joint" type="fixed">
         <parent link="base_link"/>
         <child link="caster_support"/>
-        <origin rpy="0 0 0" xyz="0.03 0.0 -0.02825"/>
+        <origin rpy="0 0 0" xyz="0.03 0.0 -0.002"/>
         <!-- <axis xyz="0 0 1"/> -->
     </joint>
 
     <joint name="caster_joint" type="continuous">
         <parent link="caster_support"/>
         <child link="caster"/>
-        <origin rpy="0 0 0" xyz="0.0 0.0 0"/>
+        <origin rpy="0 0 0" xyz="0.0 0.0 -0.02525"/>
         <axis xyz="0 1 0"/>
     </joint>
 
     <!-- gazebo -->
     <gazebo reference="base_link">
-        <material>Gazebo/Grey</material>
+        <material>Gazebo/model</material>
         <mu1>0.1</mu1>
         <mu2>0.1</mu2>
     </gazebo>
@@ -186,6 +190,11 @@
         <mu2>0.1</mu2>
     </gazebo>
     <gazebo reference="front_right_wheel">
+        <material>Gazebo/Black</material>
+        <mu1>0.1</mu1>
+        <mu2>0.1</mu2>
+    </gazebo>
+    <gazebo reference="caster">
         <material>Gazebo/Black</material>
         <mu1>0.1</mu1>
         <mu2>0.1</mu2>

@@ -2,6 +2,7 @@
 <!-- Start up simulated world -->
 	<include file="$(find gazebo_ros)/launch/empty_world.launch"/>
 	<param name="use_gui" value="false"/>
+	<!-- <env name="GAZEBO_RESOURCE_PATH" value="$(find rasberian)/media/materials"/> -->
 
 	<!-- Load the URDF into the parameter server -->
 	<param name="robot_description" command="$(find xacro)/xacro --inorder '/home/ahal/catkin_ws/src/rasberian/urdf/gazebo_rasbian.urdf.xacro'" />
