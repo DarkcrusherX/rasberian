@@ -11,7 +11,7 @@ import numpy as np
 rospy.init_node('motion_planning_topic', anonymous=True)
 
 
-GPIO.setmode(GPIO.BOARD)
+GPIO.setmode(GPIO.BCM)
  
 Motor1A = 16
 Motor1B = 18
