@@ -4,11 +4,11 @@ import math
 import RPi.GPIO as GPIO
 from time import sleep
 from nav_msgs.msg import Odometry
-from geometry_msgs.msg import Quaternion
+from geometry_msgs.msg import Twist
 from geometry_msgs.msg import Point
 import numpy as np
 
-rospy.init_node('motion_planning_topic', anonymous=True)
+rospy.init_node('receiver', anonymous=True)
 
 
 GPIO.setmode(GPIO.BCM)
@@ -49,7 +49,9 @@ def move(x_setvel,y_setvel):
         rospy.loginfo("Going Forward")
         GPIO.output(Motor2E,GPIO.LOW) 
         GPIO.output(Motor1E,GPIO.LOW)
-        GPIO.cleanup()
+        r = rospy.Rate(1000)
+        r.sleep()
+        # GPIO.cleanup()
     elif x_setvel < 0:
         GPIO.output(Motor1A,GPIO.LOW)
         GPIO.output(Motor1B,GPIO.HIGH)
@@ -61,7 +63,9 @@ def move(x_setvel,y_setvel):
 
         GPIO.output(Motor2E,GPIO.LOW) 
         GPIO.output(Motor1E,GPIO.LOW)
-        GPIO.cleanup()
+        # GPIO.cleanup()
+        r = rospy.Rate(1000)
+        r.sleep()
 
 
     if y_setvel > 0 :
@@ -71,12 +75,16 @@ def move(x_setvel,y_setvel):
         GPIO.output(Motor1E,GPIO.HIGH)
         rospy.loginfo("Going right")
         GPIO.output(Motor1E,GPIO.LOW)
+        r = rospy.Rate(1000)
+        r.sleep()
     elif y_setvel < 0 :
         GPIO.output(Motor2A,GPIO.HIGH)
         GPIO.output(Motor2B,GPIO.LOW)
         GPIO.output(Motor2E,GPIO.HIGH)        
         rospy.loginfo("Going Left") 
         GPIO.output(Motor2E,GPIO.LOW)
+        r = rospy.Rate(1000)
+        r.sleep()
 
 if __name__ == '__main__':
     while True: 
