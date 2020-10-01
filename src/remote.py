@@ -49,7 +49,7 @@ def move(x_setvel,y_setvel):
         rospy.loginfo("Going Forward")
         GPIO.output(Motor2E,GPIO.LOW) 
         GPIO.output(Motor1E,GPIO.LOW)
-        r = rospy.Rate(1000)
+        r = rospy.Rate(10)
         r.sleep()
         # GPIO.cleanup()
     elif x_setvel < 0:
@@ -64,7 +64,7 @@ def move(x_setvel,y_setvel):
         GPIO.output(Motor2E,GPIO.LOW) 
         GPIO.output(Motor1E,GPIO.LOW)
         # GPIO.cleanup()
-        r = rospy.Rate(1000)
+        r = rospy.Rate(10)
         r.sleep()
 
 
@@ -75,7 +75,7 @@ def move(x_setvel,y_setvel):
         GPIO.output(Motor1E,GPIO.HIGH)
         rospy.loginfo("Going right")
         GPIO.output(Motor1E,GPIO.LOW)
-        r = rospy.Rate(1000)
+        r = rospy.Rate(10)
         r.sleep()
     elif y_setvel < 0 :
         GPIO.output(Motor2A,GPIO.HIGH)
@@ -83,7 +83,7 @@ def move(x_setvel,y_setvel):
         GPIO.output(Motor2E,GPIO.HIGH)        
         rospy.loginfo("Going Left") 
         GPIO.output(Motor2E,GPIO.LOW)
-        r = rospy.Rate(1000)
+        r = rospy.Rate(10)
         r.sleep()
 
 if __name__ == '__main__':
