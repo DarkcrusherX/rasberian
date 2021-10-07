@@ -9,8 +9,8 @@ A ros robot with 2 wheels and localized by realsense t265.
 
 ### Real Model 
 
-![Simulation](https://github.com/DarkcrusherX/rasberian/tree/master/images/real1.jpeg)
-![Simulation](https://github.com/DarkcrusherX/rasberian/tree/master/images/real2.jpeg)
+![Real](https://github.com/DarkcrusherX/rasberian/tree/master/images/real1.jpeg)
+![Real](https://github.com/DarkcrusherX/rasberian/tree/master/images/real2.jpeg)
 
 
 
